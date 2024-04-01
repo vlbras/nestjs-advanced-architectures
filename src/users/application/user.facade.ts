@@ -4,8 +4,7 @@ import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreateUserCommand } from './commands';
 import { GetUsersQuery } from './queries';
 
-import { UserView } from '#users/domain/user-view.model';
-import { User } from '#users/domain/user.model';
+import { UserView, User } from '#users/domain/models';
 
 @Injectable()
 export class UserFacade {

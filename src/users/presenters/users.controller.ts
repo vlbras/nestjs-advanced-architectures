@@ -4,8 +4,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UserFacade } from '../application/user.facade';
 
 import { CreateUserCommand } from '#users/application/commands';
-import { UserView } from '#users/domain/user-view.model';
-import { User } from '#users/domain/user.model';
+import { UserView, User } from '#users/domain/models';
 
 @Controller('users')
 export class UsersController {

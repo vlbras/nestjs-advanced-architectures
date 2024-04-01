@@ -4,7 +4,7 @@ import { FilterQuery, Model } from 'mongoose';
 
 import { UserQueryEntity } from '../schemas/user-query.schema';
 
-import { UserView } from '#users/domain/user-view.model';
+import { UserView } from '#users/domain/models';
 
 @Injectable()
 export class UserQueryRepository {

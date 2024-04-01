@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 
 import { UserEntity } from '../entities';
 
-import { User } from '#users/domain/user.model';
+import { User } from '#users/domain/models';
 
 @Injectable()
 export class UserCommandRepository {
