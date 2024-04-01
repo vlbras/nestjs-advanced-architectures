@@ -6,3 +6,9 @@ services:
       POSTGRES_HOST_AUTH_METHOD: 'trust'
     ports:
       - '5432:5432'
+  read-db:
+    image: mongo:jammy
+    environment:
+      - MONGO_DATABASE="read-db"
+    ports:
+      - '27017:27017'
