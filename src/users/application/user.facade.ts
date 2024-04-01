@@ -1,19 +1,24 @@
 import { Injectable } from '@nestjs/common';
-import { CommandBus } from '@nestjs/cqrs';
+import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
-import { CreateUserCommand } from './commands/create-user.command';
+import { CreateUserCommand } from './commands';
+import { GetUsersQuery } from './queries';
 
+import { UserView } from '#users/domain/user-view.model';
 import { User } from '#users/domain/user.model';
 
 @Injectable()
 export class UserFacade {
-  public constructor(private readonly commandBud: CommandBus) {}
+  public constructor(
+    private readonly commandBud: CommandBus,
+    private readonly queryBus: QueryBus,
+  ) {}
 
   public async create(command: CreateUserCommand): Promise<User> {
     return this.commandBud.execute(command);
   }
 
-  public findAll(): string {
-    return `This action returns all users`;
+  public findAll(): Promise<UserView[]> {
+    return this.queryBus.execute(new GetUsersQuery());
   }
 }
