@@ -18,6 +18,12 @@ export class UserQueryRepository {
     return users.map(this.mapEntityToModel);
   }
 
+  public async upsert(user: Pick<UserView, 'id'> & Partial<UserView>): Promise<void> {
+    await this.userModel.findOneAndUpdate({ _id: user.id }, user, {
+      upsert: true,
+    });
+  }
+
   private mapEntityToModel(entity: UserQueryEntity): UserView {
     return {
       id: entity._id,
