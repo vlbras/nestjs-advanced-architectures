@@ -4,12 +4,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { UserEntity } from './entities';
 import { UserCommandRepository, UserQueryRepository } from './repositories';
-import { UserQueryEntity, UserQuerySchema } from './schemas/user-query.schema';
+import { UserViewEntity, UserViewSchema } from './schemas/user-view.schema';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([UserEntity]),
-    MongooseModule.forFeature([{ name: UserQueryEntity.name, schema: UserQuerySchema }]),
+    MongooseModule.forFeature([{ name: UserViewEntity.name, schema: UserViewSchema }]),
   ],
   providers: [UserCommandRepository, UserQueryRepository],
   exports: [UserCommandRepository, UserQueryRepository],

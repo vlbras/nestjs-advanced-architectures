@@ -2,18 +2,18 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { FilterQuery, Model } from 'mongoose';
 
-import { UserQueryEntity } from '../schemas/user-query.schema';
+import { UserViewEntity } from '../schemas/user-view.schema';
 
 import { UserView } from '#users/domain/models';
 
 @Injectable()
 export class UserQueryRepository {
   public constructor(
-    @InjectModel(UserQueryEntity.name)
-    private userModel: Model<UserQueryEntity>,
+    @InjectModel(UserViewEntity.name)
+    private userModel: Model<UserViewEntity>,
   ) {}
 
-  public async findAll(filter: FilterQuery<UserQueryEntity> = {}): Promise<UserView[]> {
+  public async findAll(filter: FilterQuery<UserViewEntity> = {}): Promise<UserView[]> {
     const users = await this.userModel.find(filter).lean().exec();
     return users.map(this.mapEntityToModel);
   }
@@ -24,7 +24,7 @@ export class UserQueryRepository {
     });
   }
 
-  private mapEntityToModel(entity: UserQueryEntity): UserView {
+  private mapEntityToModel(entity: UserViewEntity): UserView {
     return {
       id: entity._id,
       email: entity.email,
