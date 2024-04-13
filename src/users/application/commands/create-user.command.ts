@@ -4,4 +4,10 @@ export class CreateUserCommand {
 
 export type CreateUserCommandData = {
   email: string;
+  indicators: CreateIndicatorCommandData[];
+};
+
+type CreateIndicatorCommandData = {
+  name: string;
+  value: number;
 };

@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+
+import { IndicatorEntity } from './indicator.entity';
 
 @Entity('users')
 export class UserEntity {
@@ -7,4 +9,7 @@ export class UserEntity {
 
   @Column({ type: 'varchar', length: 255 })
   public email: string;
+
+  @OneToMany(() => IndicatorEntity, indicator => indicator.user, { cascade: true })
+  public indicators: IndicatorEntity[];
 }
