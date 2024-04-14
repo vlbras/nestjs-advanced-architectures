@@ -8,7 +8,14 @@
 
 ## Description
 
-NestJS Clean Architecture, Command-Query Responsibility Segregation, Domain Driven Design, Event Driven Architecture and Eventual Consistency in one repository.
+### Advanced Architectures
+
+• Clean Architecture  
+• Domain Driven Design  
+• Event Driven Architecture   
+• Eventual Consistency  
+• CQRS
+
 
 ## Installation
 
